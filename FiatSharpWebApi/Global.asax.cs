@@ -11,15 +11,19 @@ namespace FiatSharpWebApi
     {
         protected void Application_Start()
         {
+
             GlobalConfiguration.Configuration.MapHttpAttributeRoutes(new FiatSharp.RouteProviders.WebApiConfig.CustomDirectRouteProvider());
-            ConverterHelper.AddConverters<Settings, State, Move>(GlobalConfiguration.Configuration.Formatters
-                .JsonFormatter.SerializerSettings.Converters);
 
             AreaRegistration.RegisterAllAreas();
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
 
+            //todo Make this point to your types
+            ConverterHelper.AddConverters<Settings, State, Move>(GlobalConfiguration.Configuration.Formatters
+                .JsonFormatter.SerializerSettings.Converters);
+
+            //todo these are custom converters to handle the specific TicTacToe example
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
                 .Add(new MoveConverter());
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
