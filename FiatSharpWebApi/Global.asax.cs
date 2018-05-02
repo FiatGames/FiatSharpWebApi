@@ -1,18 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Http;
+﻿using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
-using API.Controllers;
-using FiatSharp;
 using FiatSharp.Examples.TicTacToe;
 using FiatSharp.JsonConverters;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace API
+namespace FiatSharpWebApi
 {
     public class WebApiApplication : System.Web.HttpApplication
     {

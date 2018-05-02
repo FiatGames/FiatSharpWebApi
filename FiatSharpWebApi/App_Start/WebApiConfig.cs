@@ -1,8 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Web.Http;
+﻿using System.Web.Http;
 
-namespace API
+namespace FiatSharpWebApi
 {
     public static partial class WebApiConfig
     {
