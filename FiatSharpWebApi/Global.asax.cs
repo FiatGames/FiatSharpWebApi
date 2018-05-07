@@ -1,8 +1,10 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Routing;
 using FiatSharp.Examples.TicTacToe;
 using FiatSharp.JsonConverters;
+using FiatSharpWebApi.Controllers;
 using Newtonsoft.Json.Converters;
 
 namespace FiatSharpWebApi
@@ -25,9 +27,16 @@ namespace FiatSharpWebApi
 
             //todo these are custom converters to handle the specific TicTacToe example
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
-                .Add(new MoveConverter());
+                .Add(new TupleConverter<Spot,Player?>());
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
-                .Add(new StringEnumConverter());
+                .Add(new EnumConverter());
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
+                .Add(new Controllers.MoveConverter());
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
+                .Add(new SettingsConverter());
+            GlobalConfiguration.Configuration.Formatters.JsonFormatter.SerializerSettings.Converters
+                .Add(new StateConverter());
+
         }
     }
 }
